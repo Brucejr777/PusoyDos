@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-gray-100 antialiased;
+    font-family: ui-system, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply inline-flex items-center justify-center w-12 h-16 rounded-lg font-bold text-sm
+           shadow-md transition-all duration-150 select-none;
+  }
+
+  .card-red {
+    @apply card bg-white text-red-500 border border-gray-200;
+  }
+
+  .card-black {
+    @apply card bg-white text-gray-800 border border-gray-200;
+  }
+
+  .card-slot {
+    @apply inline-flex items-center justify-center w-12 h-16 rounded-lg
+           border-2 border-dashed border-bg-tertiary bg-bg-secondary/50
+           transition-all duration-150;
+  }
+
+  .card-slot-filled {
+    @apply inline-flex items-center justify-center w-12 h-16 rounded-lg
+           bg-white shadow-md transition-all duration-150 cursor-pointer
+           hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm;
+  }
+
+  .card-grid-btn {
+    @apply w-9 h-12 rounded-md text-xs font-bold transition-all duration-100
+           flex items-center justify-center;
+  }
+
+  .card-grid-btn-selected {
+    @apply card-grid-btn bg-accent text-white scale-90 opacity-50;
+  }
+
+  .card-grid-btn-available {
+    @apply card-grid-btn bg-white hover:bg-gray-100 hover:scale-105;
+  }
+
+  .row-label {
+    @apply text-xs font-semibold uppercase tracking-wider text-gray-400;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-green {
+    @apply badge bg-green-500/20 text-green-400;
+  }
+
+  .badge-red {
+    @apply badge bg-red-500/20 text-red-400;
+  }
+
+  .badge-yellow {
+    @apply badge bg-yellow-500/20 text-yellow-400;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-500/20 text-blue-400;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-bg-tertiary rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}

@@ -1,109 +1,50 @@
-# Pusoy Dos Solver Overlay
+# Pusoy Strategy Solver
 
-An Android app that provides real-time card suggestions for Pusoy Dos (Chinese Poker) using screen capture and AI-powered analysis.
-
-## Features
-
-- 🎯 Real-time card suggestion overlay on top of any app
-- 🖱️ Draggable overlay window with tap-to-close
-- 🔒 Foreground service for persistent overlay
-- 📱 Material 3 design with clean UI
-- 🛠️ MVVM architecture with ViewBinding
+Chinese Poker (13-card) arrangement assistant with Monte Carlo simulation.
 
 ## Quick Start
 
-### Prerequisites
+```bash
+npm install
+npm run dev
+```
 
-- Android Studio Hedgehog (2023.1.1) or later
-- JDK 17
-- Android SDK 34 (compile/target), Min SDK 26
-
-### Build
+## Build
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd PusoyDos
-
-# Assemble debug APK
-./gradlew assembleDebug
-
-# Install on connected device
-./gradlew installDebug
-
-# Or install directly via ADB
-adb install -r app/build/outputs/apk/debug/app-debug.apk
+npm run build      # Production build → dist/
+npm run preview    # Preview production build locally
 ```
 
-### Run
+## Deploy to GitHub Pages
 
-1. Open the app on your device
-2. Grant **"Display over other apps"** permission when prompted
-3. Grant **Notification** permission (Android 13+)
-4. Tap **Start Overlay** to begin
-5. The suggestion overlay will appear on screen
-6. Drag to reposition, tap ✕ to close
+1. Push to your repo's `main` or `master` branch
+2. Go to **Settings → Pages → Build and deployment**
+3. Set **Source** to `GitHub Actions`
+4. The workflow deploys automatically on every push
 
-## Permissions
+### Manual trigger
 
-| Permission | Purpose |
-|-----------|---------|
-| `SYSTEM_ALERT_WINDOW` | Draw overlay on top of other apps |
-| `FOREGROUND_SERVICE` | Run persistent background service |
-| `FOREGROUND_SERVICE_MEDIA_PROJECTION` | Screen capture for card detection |
-| `POST_NOTIFICATIONS` | Show foreground service notification (API 33+) |
-| `INTERNET` | Potential updates/analytics |
+Go to **Actions → Deploy to GitHub Pages → Run workflow**
 
-## Architecture
+### Access
 
+Your app will be live at:
 ```
-app/src/main/java/com/pusoy/solver/
-├── MainActivity.kt          # Main UI, permission checks, service control
-├── OverlayService.kt        # Foreground service managing the overlay
-├── PermissionManager.kt     # Centralized permission handling
-└── ui/
-    └── CardOverlayView.kt   # Custom draggable overlay view
+https://<your-username>.github.io/<your-repo>/
 ```
 
-## TODO
+## How It Works
 
-The following areas need implementation:
+1. **Select 13 cards** from the bottom card grid
+2. **Arrange them** into Front (3), Middle (5), Back (5) by clicking/dragging
+3. **Get a suggestion** from the AI solver
+4. **Run Monte Carlo** to see expected value against 3 random opponents
 
-- [ ] MediaProjection screen capture setup
-- [ ] OpenCV card detection from screen frames
-- [ ] Pusoy Dos solver algorithm
-- [ ] Dynamic suggestion updates to overlay
-- [ ] Card detection visual indicators
+## Tech Stack
 
-Search for `// TODO:` comments in the codebase to find integration points.
-
-## Project Structure
-
-```
-PusoyDos/
-├── settings.gradle.kts
-├── build.gradle.kts
-├── app/
-│   ├── build.gradle.kts
-│   └── src/main/
-│       ├── AndroidManifest.xml
-│       ├── java/com/pusoy/solver/
-│       │   ├── MainActivity.kt
-│       │   ├── OverlayService.kt
-│       │   ├── PermissionManager.kt
-│       │   └── ui/CardOverlayView.kt
-│       └── res/
-│           ├── layout/
-│           │   ├── activity_main.xml
-│           │   └── overlay_window.xml
-│           └── values/
-│               ├── strings.xml
-│               ├── themes.xml
-│               └── colors.xml
-├── .gitignore
-└── README.md
-```
-
-## License
-
-See [LICENSE](LICENSE) for details.
+- Vite + React 18 + TypeScript
+- Tailwind CSS
+- Zustand (state management + undo/redo)
+- @dnd-kit (drag-and-drop arrangement)
+- Web Worker (solver runs off main thread)
