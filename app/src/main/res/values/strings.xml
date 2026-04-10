@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Pusoy Dos Solver</string>
+    <string name="app_subtitle">AI-Powered Card Suggestion Overlay</string>
+
+    <!-- Actions -->
+    <string name="action_start">Start Overlay</string>
+    <string name="action_stop">Stop Overlay</string>
+    <string name="action_close">Close</string>
+
+    <!-- Status -->
+    <string name="status_ready">Ready. Tap \'Start\' to begin overlay.</string>
+    <string name="status_running">Overlay service running.</string>
+    <string name="status_stopped">Overlay service stopped.</string>
+    <string name="status_permission_required">Overlay permission required. Tap \'Grant Permissions\' to continue.</string>
+
+    <!-- Overlay -->
+    <string name="suggestion_default">Waiting for detection…</string>
+
+    <!-- Info -->
+    <string name="permissions_info">Requires "Display over other apps" permission. Grant it in Settings when prompted.</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">Pusoy Dos Overlay</string>
+    <string name="notification_channel_description">Shows card suggestions while playing</string>
+    <string name="notification_title">Pusoy Dos Solver</string>
+    <string name="notification_text">Overlay active - showing card suggestions</string>
+</resources>
